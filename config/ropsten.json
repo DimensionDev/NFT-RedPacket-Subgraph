@@ -1,0 +1,13 @@
+{
+  "chainId": 3,
+  "network": "ropsten",
+  "contracts": [
+    {
+      "name": "NFTRedPacket",
+      "description": "NFTRedPacket for ropsten",
+      "address": "0x82c1Cc7208F3565e670F2Cd41de3651AeD2A1DF4",
+      "startBlock": 10898914,
+      "abi": "NFTRedPacket"
+    }
+  ]
+}

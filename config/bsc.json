@@ -1,0 +1,13 @@
+{
+  "chainId": 56,
+  "network": "bsc",
+  "contracts": [
+    {
+      "name": "NFTRedPacket",
+      "description": "NFTRedPacket for bsc mainnet",
+      "address": "0x71834a3FDeA3E70F14a93ED85c6be70925D0CAd9",
+      "startBlock": 8197511,
+      "abi": "NFTRedPacket"
+    }
+  ]
+}

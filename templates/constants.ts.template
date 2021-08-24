@@ -1,0 +1,9 @@
+export const CHAIN_ID = {{chainId}};
+export { ERC721 } from "./ERC721";
+export { ERC721NameBytes } from "./ERC721NameBytes";
+export { ERC721SymbolBytes } from "./ERC721SymbolBytes";
+
+export const ETH_ADDR = "0x0000000000000000000000000000000000000000";
+
+export const TOKEN_TYPE_ETHER = 0;
+export const TOKEN_TYPE_ERC721 = 1;

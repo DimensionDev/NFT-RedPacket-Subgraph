@@ -1,0 +1,39 @@
+specVersion: 0.0.2
+description: {{description}}
+schema:
+  file: ./schema.graphql
+dataSources:  
+{{#contracts}}
+  - kind: ethereum/contract
+    name: {{abi}}
+    network: {{network}}
+    source:
+      address: "{{address}}"
+      abi: {{abi}}
+      startBlock: {{startBlock}}
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - ClaimSuccess
+        - CreationSuccess
+        - RefundSuccess
+      abis:
+        - name: NFTRedPacket
+          file: ./abis/NFTRedPacket.json
+        - name: ERC721
+          file: ./abis/ERC721.json
+        - name: ERC721SymbolBytes
+          file: ./abis/ERC721SymbolBytes.json
+        - name: ERC721NameBytes
+          file: ./abis/ERC721NameBytes.json
+      eventHandlers:
+        - event: ClaimSuccess(indexed bytes32,indexed address,uint256,address)
+          handler: handleClaimSuccess
+        - event: CreationSuccess(uint256,indexed bytes32,string,string,indexed address,uint256,address,uint256,uint256,uint256[])
+          handler: handleCreationSuccess
+        - event: RefundSuccess(indexed bytes32,indexed address,uint16,uint256[],uint256)
+          handler: handleRefundSuccess
+      file: ./src/mapping.ts
+{{/contracts}}      

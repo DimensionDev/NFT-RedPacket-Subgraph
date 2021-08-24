@@ -1,0 +1,13 @@
+{
+  "chainId": 1,
+  "network": "mainnet",
+  "contracts": [
+    {
+      "name": "NFTRedPacket",
+      "description": "NFTRedPacket for eth mainnet",
+      "address": "0x26760783c12181efa3c435aee4ae686c53bdddbb",
+      "startBlock": 13087045,
+      "abi": "NFTRedPacket"
+    }
+  ]
+}

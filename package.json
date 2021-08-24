@@ -1,0 +1,34 @@
+{
+  "name": "redpacket-subgraph",
+  "license": "MIT",
+  "scripts": {
+    "prepare-subgraph:mainnet": "mustache config/mainnet.json templates/subgraph.yaml.template > subgraph.yaml",
+    "prepare-subgraph:ropsten": "mustache config/ropsten.json templates/subgraph.yaml.template > subgraph.yaml",
+    "prepare-subgraph:mumbai": "mustache config/mumbai.json templates/subgraph.noneth.yaml.template > subgraph.yaml",
+    "prepare-subgraph:bsc": "mustache config/bsc.json templates/subgraph.noneth.yaml.template > subgraph.yaml",
+    "prepare-subgraph:polygon": "mustache config/polygon.json templates/subgraph.noneth.yaml.template > subgraph.yaml",
+    "prepare-constants:mainnet": "mustache config/mainnet.json templates/constants.ts.template > src/constants.ts",
+    "prepare-constants:ropsten": "mustache config/ropsten.json templates/constants.ts.template > src/constants.ts",
+    "prepare-constants:mumbai": "mustache config/mumbai.json templates/constants.ts.template > src/constants.ts",
+    "prepare-constants:bsc": "mustache config/bsc.json templates/constants.ts.template > src/constants.ts",
+    "prepare-constants:polygon": "mustache config/polygon.json templates/constants.ts.template > src/constants.ts",
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy-thegraph-mainnet": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ dimensiondev/mask-nft-red-packet-mainnet",
+    "deploy-thegraph-ropsten": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ dimensiondev/mask-nft-red-packet-ropsten",
+    "deploy-thegraph-mumbai": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ dimensiondev/mask-nft-red-packet-mumbai",
+    "deploy-thegraph-bsc": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ dimensiondev/mask-nft-red-packet-bsc-mainnet",
+    "deploy-thegraph-polygon": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ dimensiondev/mask-nft-red-packet-polygon",
+    "create-local": "graph create --node http://localhost:8020/ dimensiondev/mask-nft-red-packet-ropsten",
+    "remove-local": "graph remove --node http://localhost:8020/ dimensiondev/mask-nft-red-packet-ropsten",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 dimensiondev/mask-nft-red-packet-ropsten"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "0.19.0",
+    "@graphprotocol/graph-ts": "0.19.0",
+    "mustache": "^4.1.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.1.3"
+  }
+}

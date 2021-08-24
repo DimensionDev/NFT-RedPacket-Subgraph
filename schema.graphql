@@ -1,0 +1,49 @@
+type Creator @entity {
+  id: ID!
+  address: Bytes!
+  name: String!
+}
+
+type Claimer @entity {
+  id: ID!
+  address: Bytes!
+  name: String!
+}
+
+type Token @entity {
+  id: ID!
+  type: Int! # 0 - Ether, 1 - ERC20
+  address: Bytes!
+  name: String!
+  symbol: String!
+  chain_id: Int!
+}
+
+type NFTRedPacket @entity {
+  id: ID!
+  rpid: String!
+  txid: String!
+  contract_address: Bytes!
+  contract_version: Int!
+  password: String!
+  shares: Int!
+  message: String!
+  name: String!
+  total: BigInt!
+  total_remaining: BigInt!
+  creation_time: Int!
+  last_updated_time: Int!
+  duration: Int!
+  chain_id: Int!
+  token: Token!
+  creator: Creator!
+  claimers: [Claimer!]!
+}
+
+type NFTRedPacketInfo @entity {
+  id: ID!
+  rpid: String!
+  message: String!
+  name: String!
+  creation_time: Int!
+}
