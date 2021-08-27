@@ -5,12 +5,9 @@
     {
       "name": "NFTRedPacket",
       "description": "NFTRedPacket for matic mainnet",
-      "address": "0x913975af2Bb8a6Be4100D7dc5e9765B77F6A5d6c",
-      "startBlock": 15577589,
-      "abi": "NFTRedPacket",
-      "creationSuccess": "CreationSuccess(uint256,bytes32,string,string,address,uint256,address,uint256,bool,uint256)",
-      "create_red_packet": "create_red_packet(bytes32,uint256,bool,uint256,bytes32,string,string,uint256,address,uint256)",
-      "mapping": "mappingV3"
+      "address": "0xb30e310c2d20e0330e1883c3517064a0be65fb6e",
+      "startBlock": 18366743,
+      "abi": "NFTRedPacket"
     }
   ]
 }

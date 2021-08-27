@@ -1,19 +1,11 @@
-import { BigInt, Address, log } from "@graphprotocol/graph-ts";
+import { Address } from "@graphprotocol/graph-ts";
+import { TokenContract } from "../generated/schema";
 import {
+  CHAIN_ID,
   ERC721,
   ERC721NameBytes,
   ERC721SymbolBytes,
-  CHAIN_ID,
-  TOKEN_TYPE_ETHER,
-  TOKEN_TYPE_ERC721,
-  ETH_ADDR,
 } from "./constants";
-
-import { Token } from "../generated/schema";
-
-export function isEth(value: string): boolean {
-  return value == ETH_ADDR;
-}
 
 export function isNullEthValue(value: string): boolean {
   return (
@@ -22,26 +14,19 @@ export function isNullEthValue(value: string): boolean {
   );
 }
 
-export function fetchToken(tokenAddress: Address): Token {
-  let token = Token.load(tokenAddress.toHexString());
-  if (token == null) {
-    token = new Token(tokenAddress.toHexString());
+export function fetchTokenContract(tokenAddress: Address): TokenContract {
+  let tokenContract = TokenContract.load(tokenAddress.toHexString());
+  if (tokenContract == null) {
+    tokenContract = new TokenContract(tokenAddress.toHexString());
   }
-  token.type = isEth(tokenAddress.toHex())
-    ? TOKEN_TYPE_ETHER
-    : TOKEN_TYPE_ERC721;
-  token.chain_id = CHAIN_ID;
-  token.address = tokenAddress;
-  token.name = fetchTokenName(tokenAddress);
-  token.symbol = fetchTokenSymbol(tokenAddress);
-  return token as Token;
+  tokenContract.chain_id = CHAIN_ID;
+  tokenContract.address = tokenAddress;
+  tokenContract.name = fetchTokenContractName(tokenAddress);
+  tokenContract.symbol = fetchTokenSymbol(tokenAddress);
+  return tokenContract as TokenContract;
 }
 
 export function fetchTokenSymbol(tokenAddress: Address): string {
-  if (isEth(tokenAddress.toHexString())) {
-    return "ETH";
-  }
-
   let contract = ERC721.bind(tokenAddress);
   let contractSymbolBytes = ERC721SymbolBytes.bind(tokenAddress);
 
@@ -63,13 +48,9 @@ export function fetchTokenSymbol(tokenAddress: Address): string {
   return symbolValue;
 }
 
-export function fetchTokenName(tokenAddress: Address): string {
-  if (isEth(tokenAddress.toHexString())) {
-    return "Ether";
-  }
-
-  let contract = ERC721.bind(tokenAddress);
-  let contractNameBytes = ERC721NameBytes.bind(tokenAddress);
+export function fetchTokenContractName(address: Address): string {
+  let contract = ERC721.bind(address);
+  let contractNameBytes = ERC721NameBytes.bind(address);
 
   // try types string and bytes32 for name
   let nameValue = "unknown";

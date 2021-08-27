@@ -1,9 +1,6 @@
-import { BigInt } from "@graphprotocol/graph-ts";
-import { fetchToken } from "./helpers";
 import {
   ClaimSuccess,
   CreationSuccess,
-  RefundSuccess,
 } from "../generated/NFTRedPacket/NFTRedPacket";
 import {
   Claimer,
@@ -12,6 +9,7 @@ import {
   NFTRedPacketInfo,
 } from "../generated/schema";
 import { CHAIN_ID } from "./constants";
+import { fetchTokenContract } from "./helpers";
 
 export function handleCreationSuccess(event: CreationSuccess): void {
   let txHash = event.transaction.hash.toHexString();
@@ -28,8 +26,8 @@ export function handleCreationSuccess(event: CreationSuccess): void {
   creator.save();
 
   // create token
-  let token = fetchToken(event.params.token_address);
-  token.save();
+  let tokenContract = fetchTokenContract(event.params.token_address);
+  tokenContract.save();
 
   red_packet_info.rpid = event.params.id.toHexString();
   red_packet_info.message = event.params.message;
@@ -42,21 +40,22 @@ export function handleCreationSuccess(event: CreationSuccess): void {
   let red_packet = new NFTRedPacket(rpid);
   red_packet.chain_id = CHAIN_ID;
   red_packet.contract_address = event.transaction.to!;
-  red_packet.contract_version = 3;
+  red_packet.contract_version = 1;
   red_packet.rpid = rpid;
   red_packet.txid = txHash;
+  red_packet.blockNumber = event.block.number;
   red_packet.password = "PASSWORD INVALID"; // a password was stored locally and kept by creator
   red_packet.message = event.params.message;
   red_packet.name = event.params.name;
   red_packet.total = event.params.total_tokens;
-  red_packet.total_remaining = event.params.total_tokens;
   red_packet.duration = event.params.duration.toI32();
   red_packet.shares = event.params.packet_number.toI32();
   red_packet.creation_time = red_packet_info.creation_time;
   red_packet.last_updated_time = red_packet_info.creation_time;
   red_packet.creator = creator.id;
   red_packet.claimers = [];
-  red_packet.token = token.id;
+  red_packet.token_contract = tokenContract.id;
+  red_packet.token_ids = event.params.token_ids;
   red_packet.save();
 }
 
@@ -80,21 +79,8 @@ export function handleClaimSuccess(event: ClaimSuccess): void {
     return;
   }
   red_packet.last_updated_time = event.block.timestamp.toI32();
-  red_packet.total_remaining = red_packet.total_remaining.minus(
-    BigInt.fromI32(1)
-  );
   if (!red_packet.claimers.includes(claimer_addr)) {
     red_packet.claimers = red_packet.claimers.concat([claimer.id]);
   }
-  red_packet.save();
-}
-
-export function handleRefundSuccess(event: RefundSuccess): void {
-  let rpid = event.params.id.toHexString();
-  let red_packet = NFTRedPacket.load(rpid);
-  if (red_packet == null) {
-    return;
-  }
-  red_packet.total_remaining = BigInt.fromI32(0);
   red_packet.save();
 }

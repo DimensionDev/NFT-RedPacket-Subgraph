@@ -10,9 +10,8 @@ type Claimer @entity {
   name: String!
 }
 
-type Token @entity {
+type TokenContract @entity {
   id: ID!
-  type: Int! # 0 - Ether, 1 - ERC20
   address: Bytes!
   name: String!
   symbol: String!
@@ -23,6 +22,7 @@ type NFTRedPacket @entity {
   id: ID!
   rpid: String!
   txid: String!
+  blockNumber: BigInt!
   contract_address: Bytes!
   contract_version: Int!
   password: String!
@@ -30,12 +30,12 @@ type NFTRedPacket @entity {
   message: String!
   name: String!
   total: BigInt!
-  total_remaining: BigInt!
   creation_time: Int!
   last_updated_time: Int!
   duration: Int!
   chain_id: Int!
-  token: Token!
+  token_contract: TokenContract!
+  token_ids: [BigInt!]!
   creator: Creator!
   claimers: [Claimer!]!
 }
