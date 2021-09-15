@@ -4,6 +4,7 @@
   "scripts": {
     "prepare-subgraph:mainnet": "mustache config/mainnet.json templates/subgraph.yaml.template > subgraph.yaml",
     "prepare-subgraph:ropsten": "mustache config/ropsten.json templates/subgraph.yaml.template > subgraph.yaml",
+    "prepare-subgraph:arbitrum": "mustache config/mumbai.json templates/subgraph.noneth.yaml.template > subgraph.yaml",
     "prepare-subgraph:mumbai": "mustache config/mumbai.json templates/subgraph.noneth.yaml.template > subgraph.yaml",
     "prepare-subgraph:bsc": "mustache config/bsc.json templates/subgraph.noneth.yaml.template > subgraph.yaml",
     "prepare-subgraph:polygon": "mustache config/polygon.json templates/subgraph.noneth.yaml.template > subgraph.yaml",
@@ -16,6 +17,7 @@
     "build": "graph build",
     "deploy-thegraph-mainnet": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ dimensiondev/mask-nft-red-packet-mainnet",
     "deploy-thegraph-ropsten": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ dimensiondev/mask-nft-red-packet-ropsten",
+    "deploy-thegraph-arbitrum": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ dimensiondev/mask-nft-red-packet-arbitrum",
     "deploy-thegraph-mumbai": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ dimensiondev/mask-nft-red-packet-mumbai",
     "deploy-thegraph-bsc": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ dimensiondev/mask-nft-red-packet-bsc-mainnet",
     "deploy-thegraph-polygon": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ dimensiondev/mask-nft-red-packet-polygon",
