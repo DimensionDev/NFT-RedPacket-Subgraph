@@ -5,8 +5,8 @@
     {
       "name": "NFTRedPacket",
       "description": "NFTRedPacket for bsc mainnet",
-      "address": "0x71834a3FDeA3E70F14a93ED85c6be70925D0CAd9",
-      "startBlock": 8197511,
+      "address": "0xf8968e1Fcf1440Be5Cec7Bb495bcee79753d5E06",
+      "startBlock": 10932348,
       "abi": "NFTRedPacket"
     }
   ]

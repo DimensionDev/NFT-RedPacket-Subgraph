@@ -5,8 +5,8 @@
     {
       "name": "NFTRedPacket",
       "description": "NFTRedPacket for matic mainnet",
-      "address": "0xb30e310c2d20e0330e1883c3517064a0be65fb6e",
-      "startBlock": 18366743,
+      "address": "0xf6Dc042717EF4C097348bE00f4BaE688dcaDD4eA",
+      "startBlock": 19131916,
       "abi": "NFTRedPacket"
     }
   ]

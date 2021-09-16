@@ -5,8 +5,8 @@
     {
       "name": "NFTRedPacket",
       "description": "NFTRedPacket for eth mainnet",
-      "address": "0x26760783c12181efa3c435aee4ae686c53bdddbb",
-      "startBlock": 13087045,
+      "address": "0x8d285739523FC2Ac8eC9c9C229ee863C8C9bF8C8",
+      "startBlock": 13229711,
       "abi": "NFTRedPacket"
     }
   ]
