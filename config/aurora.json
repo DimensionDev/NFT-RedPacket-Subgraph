@@ -1,0 +1,13 @@
+{
+  "chainId": 1313161554,
+  "network": "aurora",
+  "contracts": [
+    {
+      "name": "NFTRedPacket",
+      "description": "NFTRedPacket for matic mainnet",
+      "address": "",
+      "startBlock": 19131916,
+      "abi": "NFTRedPacket"
+    }
+  ]
+}

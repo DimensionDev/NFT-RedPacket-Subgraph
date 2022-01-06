@@ -1,0 +1,13 @@
+{
+  "chainId": 10,
+  "network": "optimistic",
+  "contracts": [
+    {
+      "name": "NFTRedPacket",
+      "description": "NFTRedPacket for matic mainnet",
+      "address": "",
+      "startBlock": 19131916,
+      "abi": "NFTRedPacket"
+    }
+  ]
+}
