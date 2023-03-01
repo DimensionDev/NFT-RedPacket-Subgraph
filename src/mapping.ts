@@ -21,7 +21,7 @@ export function handleCreationSuccess(event: CreationSuccess): void {
   if (creator == null) {
     creator = new Creator(creator_addr);
   }
-  creator.address = event.transaction.from;
+  creator.address = event.params.creator;
   creator.name = event.params.name;
   creator.save();
 
