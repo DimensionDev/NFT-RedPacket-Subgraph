@@ -38,7 +38,6 @@ type NFTRedPacket @entity {
   token_ids: [BigInt!]!
   creator: Creator!
   claimers: [Claimer!]!
-  creator_address: String!
 }
 
 type NFTRedPacketInfo @entity {

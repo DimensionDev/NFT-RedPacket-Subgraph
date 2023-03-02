@@ -38,7 +38,6 @@ export function handleCreationSuccess(event: CreationSuccess): void {
   // create nft red packet
   let rpid = red_packet_info.rpid;
   let red_packet = new NFTRedPacket(rpid);
-  red_packet.creator_address = event.params.creator.toHexString();
   red_packet.chain_id = CHAIN_ID;
   red_packet.contract_address = event.transaction.to!;
   red_packet.contract_version = 1;
