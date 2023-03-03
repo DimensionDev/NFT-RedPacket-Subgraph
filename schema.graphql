@@ -37,6 +37,7 @@ type NFTRedPacket @entity {
   token_contract: TokenContract!
   token_ids: [BigInt!]!
   creator: Creator!
+  creator_address: Bytes! #address
   claimers: [Claimer!]!
 }
 

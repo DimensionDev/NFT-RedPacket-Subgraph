@@ -53,6 +53,7 @@ export function handleCreationSuccess(event: CreationSuccess): void {
   red_packet.creation_time = red_packet_info.creation_time;
   red_packet.last_updated_time = red_packet_info.creation_time;
   red_packet.creator = creator.id;
+  red_packet.creator_address = event.params.creator;
   red_packet.claimers = [];
   red_packet.token_contract = tokenContract.id;
   red_packet.token_ids = event.params.token_ids;
