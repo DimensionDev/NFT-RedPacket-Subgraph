@@ -1,0 +1,13 @@
+{
+  "chainId": 43114,
+  "network": "avalanche",
+  "contracts": [
+    {
+      "name": "NFTRedPacket",
+      "description": "NFTRedPacket for matic mainnet",
+      "address": "0x3E99d32B8c601A6628d301673bC28B17F2aDB326",
+      "startBlock": 9209204,
+      "abi": "NFTRedPacket"
+    }
+  ]
+}
